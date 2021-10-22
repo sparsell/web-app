@@ -93,9 +93,10 @@ function Login() {
         // debugger;
 
         if (!res.ok) {
-            if (response.error === 'Email not found') {
+            
+            if (response.error === 'Email not found' || response.error === '') {
                 setError({ type: 'email', message: response.error });
-            } else if (response.error === 'Invalid password') {
+            } else if (response.error === 'Invalid password' ) {
                 setError({ type: 'password', message:response.error });
             } else {
                 setError({ type: '', message: 'an unknown error occurred' });
