@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat',
+        // make some changes
     },
     signUpContainer: {
         margin: theme.spacing(5),
