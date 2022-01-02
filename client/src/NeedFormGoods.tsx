@@ -49,7 +49,7 @@ const initialFormData: ShareANeedData = {
 
 function NeedForm() {
   const [formData, setFormData] = React.useState<ShareANeedData>(initialFormData);
-
+  const [emptyForm, setEmptyForm] = React.useState<boolean>(true);
   // HTMLInputElement does not work for the MUISelect - This works, but can we find a better way of doing it?
   const handleChange = (
     event:
@@ -57,6 +57,16 @@ function NeedForm() {
       | React.ChangeEvent<{ name?: string | undefined; value: unknown }>,
   ): void => {
     let { name = '', value }: { name?: string | undefined; value: unknown } = event.target;
+    Object.keys(formData).map(function (key, index) {
+      const keyTyped = key as keyof typeof formData;
+      const value = formData[keyTyped];
+      if (value !== '') {
+        setEmptyForm(false);
+      }
+    });
+    if (emptyForm === false) {
+      console.log('hi');
+    }
     setFormData((fData) => ({
       ...fData,
       [name]: value,
