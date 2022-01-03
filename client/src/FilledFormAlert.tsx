@@ -1,8 +1,5 @@
-import * as React from 'react';
-
-
-function filledFormAlert(){
-
-};
+function filledFormAlert() {
+  console.log('hi');
+}
 
 export default filledFormAlert;

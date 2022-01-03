@@ -3,6 +3,8 @@ import { Grid } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { TextField, RadioGroup, Select, FileUploadInput } from './FormElements';
 import { NeedOfferForm } from './FormElements';
+import filledFormAlert from './FilledFormAlert';
+import { Prompt } from 'react-router';
 const categories = [
   { value: 'figs', text: 'Figs' },
   { value: 'peaches', text: 'Peaches' },
@@ -156,6 +158,8 @@ function NeedForm() {
             <Button variant="contained" color="primary">
               Submit Need
             </Button>
+            <Prompt message={'hi'} />
+            {filledFormAlert}
           </Grid>
         </Grid>
       </Grid>
