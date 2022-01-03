@@ -3,7 +3,6 @@ import { Grid } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { TextField, RadioGroup, Select, FileUploadInput } from './FormElements';
 import { NeedOfferForm } from './FormElements';
-import { Prompt } from 'react-router';
 const categories = [
   { value: 'figs', text: 'Figs' },
   { value: 'peaches', text: 'Peaches' },
@@ -49,7 +48,6 @@ const initialFormData: ShareANeedData = {
 
 function NeedForm() {
   const [formData, setFormData] = React.useState<ShareANeedData>(initialFormData);
-  const [emptyForm, setEmptyForm] = React.useState<boolean>(true);
   // HTMLInputElement does not work for the MUISelect - This works, but can we find a better way of doing it?
   const handleChange = (
     event:
@@ -57,22 +55,11 @@ function NeedForm() {
       | React.ChangeEvent<{ name?: string | undefined; value: unknown }>,
   ): void => {
     let { name = '', value }: { name?: string | undefined; value: unknown } = event.target;
-    Object.keys(formData).map(function (key, index) {
-      const keyTyped = key as keyof typeof formData;
-      const value = formData[keyTyped];
-      if (value !== '') {
-        setEmptyForm(false);
-      }
-    });
-    if (emptyForm === false) {
-      console.log('hi');
-    }
     setFormData((fData) => ({
       ...fData,
       [name]: value,
     }));
   };
-
   return (
     <NeedOfferForm title="Share a Need: Goods">
       <Grid container spacing={5}>
@@ -169,7 +156,6 @@ function NeedForm() {
             <Button variant="contained" color="primary">
               Submit Need
             </Button>
-            <Prompt message="sure?" />
           </Grid>
         </Grid>
       </Grid>
