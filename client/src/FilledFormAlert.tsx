@@ -8,7 +8,7 @@ interface Props {
 
 const useStyles = makeStyles((theme: Theme) => ({
   modal: {
-    visibility: 'visible',
+    visibility: 'hidden',
   },
 }));
 
@@ -17,16 +17,14 @@ function FilledFormAlert(props: Props) {
   const [visible, setVisible] = React.useState<boolean>(false);
   const handleNotEmpty = () => {
     console.log(visible);
-    return visible;
   };
-  React.useEffect(() => {
-    handleNotEmpty();
-  }, [visible]);
   const newModalSetting = () => {
     setVisible(false);
+    handleNotEmpty();
     Object.values(props.formData).map((x) => {
       if (x !== '') {
         setVisible(true);
+        handleNotEmpty();
       }
     });
     return 'hi there';
@@ -34,7 +32,7 @@ function FilledFormAlert(props: Props) {
   return (
     <div className={classes.modal}>
       <Prompt message={newModalSetting} />
-      {visible ? <p> ho </p> : null}
+      <button> ho </button>
       <div>hi</div>
     </div>
   );
