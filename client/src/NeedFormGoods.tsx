@@ -3,8 +3,8 @@ import { Grid } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { TextField, RadioGroup, Select, FileUploadInput } from './FormElements';
 import { NeedOfferForm } from './FormElements';
-import filledFormAlert from './FilledFormAlert';
-import { Prompt } from 'react-router';
+import FilledFormAlert from './FilledFormAlert';
+
 const categories = [
   { value: 'figs', text: 'Figs' },
   { value: 'peaches', text: 'Peaches' },
@@ -62,6 +62,9 @@ function NeedForm() {
       [name]: value,
     }));
   };
+  React.useEffect(() => {
+    return () => console.log('ho');
+  }, []);
   return (
     <NeedOfferForm title="Share a Need: Goods">
       <Grid container spacing={5}>
@@ -158,8 +161,7 @@ function NeedForm() {
             <Button variant="contained" color="primary">
               Submit Need
             </Button>
-            <Prompt message={'hi'} />
-            {filledFormAlert}
+            <FilledFormAlert when={true} message={'message'} formData={formData} />
           </Grid>
         </Grid>
       </Grid>

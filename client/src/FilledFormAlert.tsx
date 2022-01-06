@@ -1,5 +1,12 @@
-function filledFormAlert() {
-  console.log('hi');
+interface Props {
+  when: boolean;
+  message: string;
+  formData: any;
 }
 
-export default filledFormAlert;
+function FilledFormAlert(props: Props) {
+  console.log(props.formData.title);
+  return <div> {props.message} </div>;
+}
+
+export default FilledFormAlert;
