@@ -62,9 +62,6 @@ function NeedForm() {
       [name]: value,
     }));
   };
-  React.useEffect(() => {
-    return () => console.log('ho');
-  }, []);
   return (
     <NeedOfferForm title="Share a Need: Goods">
       <Grid container spacing={5}>
@@ -161,7 +158,7 @@ function NeedForm() {
             <Button variant="contained" color="primary">
               Submit Need
             </Button>
-            <FilledFormAlert when={true} message={'message'} formData={formData} />
+            <FilledFormAlert formData={formData} />
           </Grid>
         </Grid>
       </Grid>
