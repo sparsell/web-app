@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import type { Theme } from '@material-ui/core/styles';
 interface Props {
   formData: object;
+  counter: number;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -31,7 +32,7 @@ function FilledFormAlert(props: Props) {
   };
   return (
     <div className={classes.modal}>
-      <Prompt message={newModalSetting} />
+      <Prompt when={props.counter > 0} message={newModalSetting} />
       <button> ho </button>
       <div>hi</div>
     </div>
