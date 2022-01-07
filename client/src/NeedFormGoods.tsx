@@ -62,7 +62,12 @@ function NeedForm() {
       ...fData,
       [name]: value,
     }));
-    setCounter(value.length);
+    if (Math.abs(counter - value.length) === 1) {
+      let differenceOfOne = value.length - counter;
+      setCounter(counter + differenceOfOne);
+    } else {
+      setCounter(value.length);
+    }
   };
 
   return (

@@ -28,7 +28,7 @@ function FilledFormAlert(props: Props) {
         handleNotEmpty();
       }
     });
-    return 'hi there';
+    return props.counter.toString();
   };
   return (
     <div className={classes.modal}>
