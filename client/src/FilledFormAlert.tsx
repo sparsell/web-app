@@ -9,22 +9,35 @@ interface Props {
 
 const useStyles = makeStyles((theme: Theme) => ({
   modal: {
-    visibility: 'hidden',
+    color: 'blue',
   },
 }));
 
 function FilledFormAlert(props: Props) {
   const classes = useStyles();
+  const [shown, isShown] = React.useState<boolean>(false);
+  //const [clicked, isClicked] = React.useState<boolean>(false);
   const handleNotEmpty = () => {
+    console.log(shown);
+    isShown(true);
+
     return 'hi';
   };
   return (
     <div className={classes.modal}>
       <Prompt when={props.counter === true} message={handleNotEmpty} />
       <button> ho </button>
-      <div>hi</div>
+      {shown ? <Modal /> : null}
     </div>
   );
 }
+
+const Modal = () => {
+  return (
+    <div>
+      <p>this is a modal</p>
+    </div>
+  );
+};
 
 export default FilledFormAlert;
