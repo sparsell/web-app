@@ -4,7 +4,6 @@ import { Button } from '@material-ui/core';
 import { TextField, RadioGroup, Select, FileUploadInput } from './FormElements';
 import { NeedOfferForm } from './FormElements';
 import FilledFormAlert from './FilledFormAlert';
-
 const categories = [
   { value: 'figs', text: 'Figs' },
   { value: 'peaches', text: 'Peaches' },
@@ -50,7 +49,8 @@ const initialFormData: ShareANeedData = {
 
 function NeedForm() {
   const [formData, setFormData] = React.useState<ShareANeedData>(initialFormData);
-  const [counter, setCounter] = React.useState<number>(0);
+  //const [counter] = React.useState<number>(0);
+  const [formTouched, isFormTouched] = React.useState<boolean>(false);
   // HTMLInputElement does not work for the MUISelect - This works, but can we find a better way of doing it?
   const handleChange = (
     event:
@@ -62,14 +62,16 @@ function NeedForm() {
       ...fData,
       [name]: value,
     }));
-    if (Math.abs(counter - value.length) === 1) {
-      let differenceOfOne = value.length - counter;
-      setCounter(counter + differenceOfOne);
-    } else {
-      setCounter(value.length);
-    }
+    isFormTouched(true);
+    console.log(formTouched);
+    // counter function
+    //if (Math.abs(counter - value.length) === 1) {
+    //let differenceOfOne = value.length - counter;
+    //setCounter(counter + differenceOfOne);
+    //} else {
+    //setCounter(value.length);
+    //}
   };
-
   return (
     <NeedOfferForm title="Share a Need: Goods">
       <Grid container spacing={5}>
@@ -166,7 +168,7 @@ function NeedForm() {
             <Button variant="contained" color="primary">
               Submit Need
             </Button>
-            <FilledFormAlert counter={counter} formData={formData} />
+            <FilledFormAlert counter={formTouched} formData={formData} />
           </Grid>
         </Grid>
       </Grid>

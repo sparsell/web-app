@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import type { Theme } from '@material-ui/core/styles';
 interface Props {
   formData: object;
-  counter: number;
+  counter: boolean;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -15,24 +15,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 function FilledFormAlert(props: Props) {
   const classes = useStyles();
-  const [visible, setVisible] = React.useState<boolean>(false);
   const handleNotEmpty = () => {
-    console.log(visible);
-  };
-  const newModalSetting = () => {
-    setVisible(false);
-    handleNotEmpty();
-    Object.values(props.formData).map((x) => {
-      if (x !== '') {
-        setVisible(true);
-        handleNotEmpty();
-      }
-    });
-    return props.counter.toString();
+    return 'hi';
   };
   return (
     <div className={classes.modal}>
-      <Prompt when={props.counter > 0} message={newModalSetting} />
+      <Prompt when={props.counter === true} message={handleNotEmpty} />
       <button> ho </button>
       <div>hi</div>
     </div>
