@@ -4,6 +4,7 @@ import { Button } from '@material-ui/core';
 import { TextField, RadioGroup, Select, FileUploadInput } from './FormElements';
 import { NeedOfferForm } from './FormElements';
 import FilledFormAlert from './FilledFormAlert';
+
 const categories = [
   { value: 'figs', text: 'Figs' },
   { value: 'peaches', text: 'Peaches' },
@@ -63,14 +64,6 @@ function NeedForm() {
       [name]: value,
     }));
     isFormTouched(true);
-    console.log(formTouched);
-    // counter function
-    //if (Math.abs(counter - value.length) === 1) {
-    //let differenceOfOne = value.length - counter;
-    //setCounter(counter + differenceOfOne);
-    //} else {
-    //setCounter(value.length);
-    //}
   };
   return (
     <NeedOfferForm title="Share a Need: Goods">
